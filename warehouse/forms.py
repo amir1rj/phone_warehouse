@@ -1,5 +1,5 @@
 from django import forms
-from .models import Phone, Brand, Color
+from .models import Phone, Brand, Color, Country
 from django.core.exceptions import ValidationError
 import re
 
@@ -87,4 +87,23 @@ class BrandForm(forms.ModelForm):
         name = self.cleaned_data.get('name')
         if not name.isalpha():
             raise ValidationError('Brand name should only contain alphabetic characters.')
+        return name
+
+
+class CountryForm(forms.ModelForm):
+    class Meta:
+        model = Country
+        fields = ['name']
+        labels = {
+            'name': 'Country Name',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(CountryForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form-control'})
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if not name.isalpha():
+            raise ValidationError('Country name should only contain alphabetic characters.')
         return name

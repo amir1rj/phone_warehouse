@@ -4,7 +4,7 @@
     <a href="javascript:void(0)" class="closeNavbtn d-block d-lg-none">&times;</a>
     <h4 class="text-white text-center w-100">SideMenu</h4>
     <ul class="row side-menu-parent">
-        <li class="side-menu-item {% if current_page == 'dashboard' %}active{% endif %}">
+        <li class="side-menu-item {% if current_page == 'add phone' %}active{% endif %}">
             <a href="{% url 'phone:add' %}">
                 <svg fill="" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
                      class="icon glyph" stroke="">
@@ -20,7 +20,7 @@
                 add phone
             </a>
         </li>
-        <li class="side-menu-item {% if current_page == 'dashboard' %}active{% endif %}">
+        <li class="side-menu-item {% if current_page == 'add color' %}active{% endif %}">
             <a href="{% url 'phone:color_add' %}">
                 <svg fill="" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
                      class="icon glyph" stroke="">
@@ -36,7 +36,7 @@
                 add color
             </a>
         </li>
-        <li class="side-menu-item {% if current_page == 'dashboard' %}active{% endif %}">
+        <li class="side-menu-item {% if current_page == 'add brand' %}active{% endif %}">
             <a href="{% url 'phone:brand_add' %}">
                 <svg fill="" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
                      class="icon glyph" stroke="">
@@ -50,6 +50,38 @@
                     </g>
                 </svg>
                 add brand
+            </a>
+        </li>
+        <li class="side-menu-item {% if current_page == 'add country' %}active{% endif %}">
+            <a href="{% url 'phone:country_add' %}">
+                <svg fill="" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
+                     class="icon glyph" stroke="">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <rect x="2" y="2" width="9" height="11" rx="2"></rect>
+                        <rect x="13" y="2" width="9" height="7" rx="2"></rect>
+                        <rect x="2" y="15" width="9" height="7" rx="2"></rect>
+                        <rect x="13" y="11" width="9" height="11" rx="2"></rect>
+                    </g>
+                </svg>
+                add country
+            </a>
+        </li>
+        <li class="side-menu-item ">
+            <a href="/api/docs">
+                <svg fill="" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
+                     class="icon glyph" stroke="">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <rect x="2" y="2" width="9" height="11" rx="2"></rect>
+                        <rect x="13" y="2" width="9" height="7" rx="2"></rect>
+                        <rect x="2" y="15" width="9" height="7" rx="2"></rect>
+                        <rect x="13" y="11" width="9" height="11" rx="2"></rect>
+                    </g>
+                </svg>
+                report page
             </a>
         </li>
 

@@ -1,4 +1,5 @@
 from django.contrib.postgres.search import SearchQuery, SearchVector
+from django.db.models import F
 from django.shortcuts import render
 
 # Create your views here.
@@ -9,7 +10,7 @@ from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import generics
 
 from .filters import PhoneFilter
-from .forms import PhoneForm, BrandForm, ColorForm
+from .forms import PhoneForm, BrandForm, ColorForm, CountryForm
 from django.contrib import messages
 
 from .models import Phone
@@ -22,7 +23,7 @@ class PhoneCreateView(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, "current_page": 'add phone'})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -43,7 +44,7 @@ class ColorCreateView(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, "current_page": 'add color'})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -62,7 +63,7 @@ class BrandCreateView(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form, "current_page": 'add brand'})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -115,3 +116,48 @@ class PhoneListAPIView(generics.ListAPIView):
             )
 
         return queryset
+
+
+class CountryCreateView(View):
+    form_class = CountryForm
+    template_name = 'warehouse/country_form.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form, "current_page": 'add country'})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Country successfully added!")
+            return redirect('phone:country_add')
+        else:
+            messages.error(request, "Please correct the errors below.")
+            return render(request, self.template_name, {'form': form})
+
+
+@extend_schema(
+    description="Retrieve phones based on country similarity.",
+    parameters=[
+        OpenApiParameter(
+            name="country_similar",
+            description="Set to 'true' to get phones where the country matches the brand's country. Set to 'false' to get phones where they differ.",
+            required=False,
+            type=bool,  # This indicates that it's a boolean parameter
+        ),
+    ],
+)
+class SimilarityPhoneListAPIView(generics.ListAPIView):
+    serializer_class = PhoneListSerializer
+
+    def get_queryset(self):
+        # Get the country_similar query parameter and convert it to a boolean
+        country_similar = self.request.query_params.get('country_similar', 'false').lower() == 'true'
+
+        if country_similar:
+            # If true, return phones where the country matches the brand's country
+            return Phone.objects.filter(country__name=F('brand__country__name'))
+        else:
+            # If false, return phones where the country is different from the brand's country
+            return Phone.objects.exclude(country__name=F('brand__country__name'))
