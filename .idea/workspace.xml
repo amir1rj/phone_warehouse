@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea00cce3-8994-4913-92b6-bf84a6beb3f1" name="Changes" comment="" />
+    <list default="true" id="ea00cce3-8994-4913-92b6-bf84a6beb3f1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +45,7 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Ubuntu/home/amir/Warehousing",
+    "last_opened_file_path": "//wsl$/Ubuntu/home/amir/tosod",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -108,7 +110,7 @@
       <workItem from="1727262368770" duration="258000" />
       <workItem from="1727333958954" duration="16832000" />
       <workItem from="1727418226392" duration="3000" />
-      <workItem from="1727506721813" duration="4550000" />
+      <workItem from="1727506721813" duration="7231000" />
     </task>
     <servers />
   </component>
@@ -126,6 +128,11 @@
           <url>file://$PROJECT_DIR$/warehouse/views.py</url>
           <line>59</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/warehouse/views.py</url>
+          <line>89</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="django-line">
           <url>file://$PROJECT_DIR$/templates/inclodes/navbar.html</url>
