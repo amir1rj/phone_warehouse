@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include "inclodes/head.html" %}
+        <title>{% block title %}
+
+
+    {% endblock %}</title>
+
+</head>
+<body>
+
+{% include "inclodes/header.html" %}
+
+{% include "inclodes/navbar.html" %}
+<main class="main-page dashboard">
+    {% block content %}
+
+
+    {% endblock %}
+
+</main>
+</body>
+{% include "inclodes/footer.html" %}
+
+</html>

@@ -1,0 +1,91 @@
+version: '3.9'
+
+services:
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    networks:
+      - warehousing
+
+    restart: always
+
+  celery_worker:
+    container_name: wh_celery_worker
+    command: "celery -A Warehousing worker -l INFO"
+    depends_on:
+      - main
+      - redis
+      - postgres
+    build: .
+    env_file:
+      - .env
+    networks:
+      - warehousing
+    volumes:
+      - .:/main_src/
+    restart: always
+
+  celery_beat:
+    container_name: wh_celery_beat
+    command: "celery -A Warehousing beat -l info"
+    build: .
+    depends_on:
+      - main
+      - postgres
+      - redis
+      - celery_worker
+    env_file:
+      - .env
+    networks:
+      - warehousing
+    volumes:
+      - .:/main_src/
+    restart: always
+
+  main:
+    build: .
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 "
+    container_name: wh_main_container
+    volumes:
+      - .:/main_src/
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - warehousing
+    restart: always
+
+  nginx:
+    container_name: wh_nginx_container
+    command: nginx -g 'daemon off;'
+    image: nginx:latest
+    depends_on:
+      - main
+    networks:
+      - warehousing
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+  postgres:
+    container_name: wh_postgres_container
+    image: postgres:latest
+    env_file:
+      - .env
+    networks:
+      - warehousing
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - warehousing_data:/var/lib/postgresql/data
+
+networks:
+  warehousing:
+
+volumes:
+  warehousing_data:

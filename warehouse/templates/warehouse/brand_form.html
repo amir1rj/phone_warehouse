@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    add brand
+{% endblock %}
+{% block content %}
+
+
+    <!-- Content Section -->
+    <section class="container-fluid content-sec">
+        <div class="row m-0 content-box">
+            <div class="col-12">
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn-submit btn-secondary my-3 mx-auto">
+                        submit
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+    </section><!-- Content Section -->
+
+
+{% endblock %}
+
+
+
