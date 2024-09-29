@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea00cce3-8994-4913-92b6-bf84a6beb3f1" name="Changes" comment="" />
+    <list default="true" id="ea00cce3-8994-4913-92b6-bf84a6beb3f1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +45,7 @@
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "//wsl$/Ubuntu/home/amir/tosod",
+    "last_opened_file_path": "//wsl$/Ubuntu/home/amir/vpn_panel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,6 +56,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\amir\Warehousing" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="\\wsl$\Ubuntu\home\amir\Warehousing\warehouse\templates" />
       <recent name="\\wsl$\Ubuntu\home\amir\Warehousing\warehouse" />
@@ -108,7 +113,7 @@
       <workItem from="1727262368770" duration="258000" />
       <workItem from="1727333958954" duration="16832000" />
       <workItem from="1727418226392" duration="3000" />
-      <workItem from="1727506721813" duration="7423000" />
+      <workItem from="1727506721813" duration="8913000" />
     </task>
     <servers />
   </component>
